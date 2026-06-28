@@ -1,153 +1,253 @@
-// Seção Sobre
+// ============================================================
+// DEVICTOR — About Me v2.0
+// ============================================================
+
 .about {
-  &__content {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    gap: 3rem;
+    &__content {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        gap: 3.5rem;
 
-    @include respond-to($breakpoint-md) {
-      flex-flow: row;
-      align-items: flex-start;
-    }
-  }
-
-  &__image-container {
-    position: relative;
-    display: flex;
-    @include imageSize(250px);
-    z-index: 0;
-
-    @include respond-to($breakpoint-md) {
-      @include imageSize(300px);
+        @include respond-to($breakpoint-md) {
+            flex-flow: row;
+            align-items: flex-start;
+        }
     }
 
-    animation: fadeInUp both;
-    animation-timeline: view(100% 5%);
+    // ── Imagem ─────────────────────────────────────────────
+    &__image-container {
+        position: relative;
+        display: flex;
+        @include imageSize(260px);
+        z-index: 0;
+        flex-shrink: 0;
 
-    &--brackets {
-      position: relative;
-      display: flex;
-      @include imageSize(250px);
-      z-index: 0;
-      clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0% 50%, 25% 0%);
+        @include respond-to($breakpoint-md) {
+            @include imageSize(300px);
+        }
 
-      @include respond-to($breakpoint-md) {
-        @include imageSize(300px);
-      }
+        animation: slideInLeft both;
+        animation-timeline: view(100% 5%);
+
+        &--brackets {
+            position: relative;
+            display: flex;
+            @include imageSize(260px);
+            z-index: 0;
+            clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0% 50%, 25% 0%);
+
+            @include respond-to($breakpoint-md) {
+                @include imageSize(300px);
+            }
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            width: 85px;
+            height: 100%;
+            top: 0;
+            background: $gradient-accent;
+            z-index: 1;
+            transition: $transition-base;
+
+            @include respond-to($breakpoint-md) {
+                width: 100px;
+            }
+        }
+
+        &::before {
+            left: -1.7rem;
+            clip-path: polygon(100% 0%, 25% 50%, 100% 100%, 75% 100%, 0% 50%, 75% 0%);
+
+            @include respond-to($breakpoint-md) {
+                left: -2rem;
+            }
+        }
+
+        &::after {
+            right: -1.7rem;
+            clip-path: polygon(25% 0, 100% 50%, 25% 100%, 0% 100%, 75% 50%, 0% 0%);
+
+            @include respond-to($breakpoint-md) {
+                right: -2rem;
+            }
+        }
+
+        &:hover {
+            &::before, &::after {
+                filter: drop-shadow(0 0 8px rgba($color-accent, 0.5));
+            }
+        }
     }
 
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      width: 85px;
-      height: 100%;
-      top: 0;
-      background: $primary-color;
-      z-index: 1;
-
-      @include respond-to($breakpoint-md) {
-        width: 100px;
-      }
+    &__image {
+        @include imageSize(100%);
+        object-fit: cover;
+        clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0% 50%, 25% 0%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    &::before {
-      left: -1.7rem;
-      clip-path: polygon(100% 0%, 25% 50%, 100% 100%, 75% 100%, 0% 50%, 75% 0%);
-
-      @include respond-to($breakpoint-md) {
-        left: -2rem;
-      }
+    &__image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include imageSize(100%);
+        background-color: rgba($color-accent, 0.15);
+        clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0% 50%, 25% 0%);
+        opacity: 0;
+        transition: opacity 0.4s;
     }
 
-    &::after {
-      right: -1.7rem;
-      clip-path: polygon(25% 0, 100% 50%, 25% 100%, 0% 100%, 75% 50%, 0% 0%);
-
-      @include respond-to($breakpoint-md) {
-        right: -2rem;
-      }
-    }
-  }
-
-  &__image {
-    @include imageSize(100%);
-    object-fit: cover;
-    clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0% 50%, 25% 0%);
-    transition: transform 0.3s;
-  }
-
-  &__image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    @include imageSize(100%);
-    background-color: rgba($primary-color, 0.2);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  &__image-container:hover {
-    .about__image {
-      transform: scale(1.1);
+    &__image-container:hover {
+        .about__image { transform: scale(1.07); }
+        .about__image-overlay { opacity: 1; }
     }
 
-    .about__image-overlay {
-      opacity: 1;
-    }
-  }
+    // ── Texto ──────────────────────────────────────────────
+    &__text {
+        flex: 1;
+        display: flex;
+        flex-flow: column;
+        align-items: flex-start;
+        gap: 1.25rem;
 
-  &__text {
-    flex: 1;
+        @include respond-max($breakpoint-md) {
+            align-items: center;
+        }
 
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    gap: 1rem;
-
-    animation: fadeInUp both;
-    animation-timeline: view(70% 5%);
-  }
-
-  &__description {
-    text-align: justify;
-  }
-
-  &__cv-button {
-    padding: 0.8rem 1.5rem;
-    background-color: $primary-color;
-    color: $background-color;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: all 0.3s;
-
-    &:hover {
-      color: $background-color;
-      background-color: $hover-color;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        animation: fadeInUp both;
+        animation-timeline: view(70% 5%);
     }
 
-    i {
-      margin-left: 0.5rem;
+    &__description {
+        text-align: left;
+        color: $color-text;
+        line-height: 1.8;
+        font-size: $font-size-base;
+
+        @include respond-max($breakpoint-md) {
+            text-align: center;
+        }
     }
-  }
+
+    // ── Stats Cards ────────────────────────────────────────
+    &__stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        width: 100%;
+        margin: 0.5rem 0;
+
+        @include respond-max($breakpoint-sm) {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+    }
+
+    &__stat {
+        background: $color-bg-card;
+        border: 1px solid $color-border;
+        border-radius: $radius-md;
+        padding: 1rem 0.75rem;
+        text-align: center;
+        transition: $transition-base;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: $gradient-accent;
+        }
+
+        &:hover {
+            border-color: $color-border-hover;
+            transform: translateY(-3px);
+            box-shadow: $shadow-glow;
+        }
+
+        &-value {
+            display: block;
+            font-family: $font-heading;
+            font-size: $font-size-2xl;
+            font-weight: 800;
+            @include gradient-text($gradient-accent);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        &-label {
+            font-size: $font-size-xs;
+            color: $color-text-muted;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+    }
+
+    // ── Botão CV ───────────────────────────────────────────
+    &__cv-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.875rem 1.75rem;
+        background: $gradient-accent;
+        color: $color-bg;
+        border-radius: $radius-full;
+        font-weight: 700;
+        font-size: $font-size-sm;
+        transition: $transition-bounce;
+        box-shadow: 0 4px 15px rgba($color-accent, 0.3);
+        letter-spacing: 0.02em;
+
+        &:hover {
+            color: $color-bg;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba($color-accent, 0.45);
+        }
+
+        i { font-size: 0.9em; }
+    }
 }
 
+// ── Light Theme ────────────────────────────────────────────
 .page--light-theme {
-  .about {
-    &__image-overlay {
-      background-color: rgba($light-theme-primary-color, 0.2);
-    }
+    .about {
+        &__image-overlay {
+            background-color: rgba($light-accent, 0.15);
+        }
 
-    &__cv-button {
-      background-color: $light-theme-primary-color;
-      color: $light-theme-background-color;
+        &__description { color: $light-text; }
 
-      &:hover {
-        background-color: $light-theme-hover-color;
-      }
+        &__stat {
+            background: $light-bg-card;
+            border-color: $light-border;
+            box-shadow: $shadow-sm;
+
+            &:hover {
+                border-color: $light-border-hover;
+                box-shadow: 0 4px 20px rgba($light-accent, 0.15);
+            }
+
+            &-value { @include gradient-text(linear-gradient(135deg, $light-accent, $light-accent-darker)); }
+            &-label { color: $light-text-muted; }
+        }
+
+        &__cv-button {
+        background: linear-gradient(135deg, $light-accent, $light-accent-dark);
+            box-shadow: 0 4px 15px rgba($light-accent, 0.3);
+
+            &:hover {
+                color: $light-bg;
+                box-shadow: 0 8px 25px rgba($light-accent, 0.4);
+            }
+        }
     }
-  }
 }

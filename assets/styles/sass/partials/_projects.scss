@@ -1,138 +1,209 @@
-// Seção Projetos
+// ============================================================
+// DEVICTOR — Projects v2.0
+// ============================================================
+
 .projects {
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
 
-    @include respond-to($breakpoint-md) {
-      grid-template-columns: repeat(2, 1fr);
-    }
+        @include respond-to($breakpoint-md) {
+            grid-template-columns: repeat(2, 1fr);
+        }
 
-    @include respond-to($breakpoint-lg) {
-      grid-template-columns: repeat(3, 1fr);
+        @include respond-to($breakpoint-lg) {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
-  }
 }
 
 .project-card {
-  background-color: $card-background;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: justify;
-  transition: transform 0.3s, box-shadow 0.3s;
-
-  animation: fadeInUp both;
-  animation-timeline: view(70% 5%);
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-
-  &__image-container {
-    position: relative;
+    background: $gradient-card;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
     overflow: hidden;
-  }
-
-  &__image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.3s;
-  }
-
-  &__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    @include imageSize(100%);
-    background-color: rgba($primary-color, 0.7);
+    transition: $transition-base;
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
 
-  &__link {
-    color: $background-color;
-    background-color: transparent;
-    border: 2px solid $background-color;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: all 0.3s;
+    // Accent top stripe
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: $gradient-accent;
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    animation: fadeInUp both;
+    animation-timeline: view(70% 5%);
 
     &:hover {
-      background-color: $background-color;
-      color: $primary-color;
-    }
-  }
+        transform: translateY(-6px);
+        border-color: $color-border-hover;
+        box-shadow: $shadow-glow;
 
-  &:hover {
-    .project-card__image {
-      transform: scale(1.1);
+        &::before { opacity: 1; }
     }
 
-    .project-card__overlay {
-      opacity: 1;
+    &__image-container {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
     }
-  }
 
-  &__title {
-    font-size: 1.2rem;
-    margin: 1rem;
-    color: $primary-color;
-  }
-
-  &__description {
-    margin: 0 1rem;
-  }
-
-  &__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 1rem;
-  }
-
-  &__tag {
-    background-color: rgba($primary-color, 0.1);
-    color: $primary-color;
-    padding: 0.2rem 0.5rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-  }
-}
-
-.page--light-theme {
-  .project-card {
-    background-color: $light-theme-card-background;
+    &__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        display: block;
+    }
 
     &__overlay {
-      background-color: rgba($light-theme-primary-color, 0.9);
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to bottom,
+            rgba($color-accent, 0.75) 0%,
+            rgba($color-accent-20, 0.9) 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+        opacity: 0;
+        transition: opacity 0.35s ease;
     }
 
     &__link {
-      color: $light-theme-background-color;
-      border-color: $light-theme-background-color;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: $color-bg;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1.5px solid rgba(255, 255, 255, 0.5);
+        padding: 0.5rem 1.1rem;
+        border-radius: $radius-full;
+        font-size: $font-size-sm;
+        font-weight: 600;
+        transition: $transition-base;
+        backdrop-filter: blur(4px);
 
-      &:hover {
-        background-color: $light-theme-background-color;
-        color: $light-theme-primary-color;
-      }
+        i { font-size: 0.85em; }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: $color-accent;
+            border-color: transparent;
+            transform: scale(1.05);
+        }
+    }
+
+    &:hover {
+        .project-card__image { transform: scale(1.08); }
+        .project-card__overlay { opacity: 1; }
+    }
+
+    // ── Corpo do Card ──────────────────────────────────────
+    &__body {
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        flex: 1;
     }
 
     &__title {
-      color: $light-theme-primary-color;
+        font-family: $font-heading;
+        font-size: $font-size-lg;
+        font-weight: 700;
+        color: $color-text-bright;
+        margin: 0;
+        letter-spacing: -0.01em;
+    }
+
+    &__description {
+        color: $color-text;
+        font-size: $font-size-sm;
+        line-height: 1.7;
+        flex: 1;
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: auto;
+        padding-top: 0.75rem;
+        border-top: 1px solid $color-border;
     }
 
     &__tag {
-      background-color: rgba($light-theme-primary-color, 0.1);
-      color: $light-theme-primary-color;
+        background: rgba($color-accent, 0.08);
+        color: $color-accent;
+        padding: 0.2rem 0.65rem;
+        border-radius: $radius-full;
+        font-size: $font-size-xs;
+        font-weight: 600;
+        border: 1px solid rgba($color-accent, 0.15);
+        letter-spacing: 0.02em;
+        transition: $transition-fast;
+
+        &:hover {
+            background: rgba($color-accent, 0.18);
+            border-color: rgba($color-accent, 0.35);
+        }
     }
-  }
+}
+
+// ── Light Theme ────────────────────────────────────────────
+.page--light-theme {
+    .project-card {
+        background: $light-bg-card;
+        border-color: $light-border;
+        box-shadow: $shadow-sm;
+
+        &:hover {
+            border-color: $light-border-hover;
+            box-shadow: 0 8px 30px rgba($light-accent, 0.15);
+        }
+
+        &__overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba($light-accent, 0.82) 0%,
+                rgba($light-accent-darker, 0.95) 100%
+            );
+        }
+
+        &__link {
+            &:hover {
+                color: $light-accent;
+            }
+        }
+
+        &__title { color: $light-text; }
+        &__description { color: $light-text-muted; }
+
+        &__tags { border-top-color: $light-border; }
+
+        &__tag {
+            background: rgba($light-accent, 0.08);
+            color: $light-accent;
+            border-color: rgba($light-accent, 0.2);
+
+            &:hover {
+                background: rgba($light-accent, 0.15);
+            }
+        }
+    }
 }

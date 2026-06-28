@@ -1,21 +1,114 @@
-// Variáveis de Cor
-$background-color: #0a192f;
-$text-color: #8892b0;
-$primary-color: #00adb5;
-$secondary-color: #112240;
-$card-background: #112240;
-$hover-color: #007a80;
+// ============================================================
+// DEVICTOR — Design Tokens v2.0
+// ============================================================
 
-// Variáveis do Tema Claro
-$light-theme-background-color: #f0f0f0;
-$light-theme-text-color: #333333;
-$light-theme-primary-color: #007a80;
-$light-theme-secondary-color: #ffffff;
-$light-theme-card-background: #ffffff;
-$light-theme-hover-color: #005b66;
+// ── Paleta Principal (Dark Theme) ──────────────────────────
+$color-bg:           #080d1a;       // fundo base profundo
+$color-bg-surface:   #0d1526;       // superfície elevada
+$color-bg-card:      #111c35;       // cards
+$color-bg-card-alt:  #0f1a2e;       // cards alternados
 
-// Breakpoints
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
+$color-accent:       #00d4e0;       // ciano vibrante (principal)
+$color-accent-dark:  #00959e;       // ciano escurecido (hover)
+$color-accent-glow:  rgba(0, 212, 224, 0.25); // glow para sombras
+
+$color-text:         #a8b4d0;       // texto base
+$color-text-muted:   #5c6e8f;       // texto apagado
+$color-text-light:   #cdd6f4;       // texto claro
+$color-text-bright:  #e8eaf6;       // texto mais brilhante
+
+$color-border:       rgba(0, 212, 224, 0.12);  // borda sutil
+$color-border-hover: rgba(0, 212, 224, 0.35);  // borda hover
+
+// ── Paleta Tema Claro ───────────────────────────────────────
+$light-bg:              #f4f6fb;
+$light-bg-surface:      #ffffff;
+$light-bg-card:         #ffffff;
+$light-text:            #1a2240;
+$light-text-muted:      #607090;
+$light-accent:          #007ea8;
+$light-accent-dark:     #005b7a;
+$light-accent-darker:   #004d68;  // pre-computed: darken($light-accent, 10-15%)
+$light-accent-glow:     rgba(0, 126, 168, 0.15);
+$light-border:          rgba(0, 126, 168, 0.15);
+$light-border-hover:    rgba(0, 126, 168, 0.4);
+
+// Dark accent variants (pre-computed, no darken() needed)
+$color-accent-20:    #009198;   // darken($color-accent, 20%)
+$color-accent-10:    #00b8c4;   // darken($color-accent, 10%)
+
+// ── Gradientes ─────────────────────────────────────────────
+$gradient-accent:    linear-gradient(135deg, #00d4e0, #0077ff);
+$gradient-bg-mesh:   radial-gradient(ellipse at 20% 50%, rgba(0, 212, 224, 0.05) 0%, transparent 60%),
+                     radial-gradient(ellipse at 80% 20%, rgba(0, 119, 255, 0.04) 0%, transparent 60%),
+                     radial-gradient(ellipse at 50% 90%, rgba(0, 212, 224, 0.03) 0%, transparent 50%);
+$gradient-card:      linear-gradient(145deg, #111c35, #0d1526);
+$gradient-hero:      linear-gradient(180deg, transparent 0%, rgba(8, 13, 26, 0.3) 100%);
+
+// ── Sombras ────────────────────────────────────────────────
+$shadow-sm:    0 2px 8px rgba(0, 0, 0, 0.3);
+$shadow-md:    0 4px 20px rgba(0, 0, 0, 0.4);
+$shadow-lg:    0 8px 40px rgba(0, 0, 0, 0.5);
+$shadow-glow:  0 0 20px rgba(0, 212, 224, 0.2), 0 4px 20px rgba(0, 0, 0, 0.4);
+$shadow-glow-strong: 0 0 40px rgba(0, 212, 224, 0.35), 0 8px 30px rgba(0, 0, 0, 0.5);
+
+// ── Bordas ─────────────────────────────────────────────────
+$radius-sm:    6px;
+$radius-md:    12px;
+$radius-lg:    20px;
+$radius-full:  9999px;
+
+// ── Tipografia ─────────────────────────────────────────────
+$font-primary:   'Inter', sans-serif;
+$font-heading:   'Outfit', sans-serif;
+
+$font-size-xs:   0.75rem;
+$font-size-sm:   0.875rem;
+$font-size-base: 1rem;
+$font-size-lg:   1.125rem;
+$font-size-xl:   1.25rem;
+$font-size-2xl:  1.5rem;
+$font-size-3xl:  2rem;
+$font-size-4xl:  2.5rem;
+$font-size-5xl:  3.5rem;
+$font-size-6xl:  4.5rem;
+
+// ── Transições ─────────────────────────────────────────────
+$transition-fast:   all 0.2s ease;
+$transition-base:   all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow:   all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+// ── Breakpoints ────────────────────────────────────────────
+$breakpoint-xs:  480px;
+$breakpoint-sm:  576px;
+$breakpoint-md:  768px;
+$breakpoint-lg:  992px;
+$breakpoint-xl:  1200px;
+$breakpoint-2xl: 1400px;
+
+// ── Espaçamento ────────────────────────────────────────────
+$spacing-section: 6rem;
+$spacing-section-sm: 4rem;
+
+// ── Z-Index ────────────────────────────────────────────────
+$z-base:    1;
+$z-overlay: 10;
+$z-modal:   100;
+$z-header:  1000;
+$z-tooltip: 2000;
+
+// ── Retrocompatibilidade (aliases v1) ──────────────────────
+$background-color:              $color-bg;
+$text-color:                    $color-text;
+$primary-color:                 $color-accent;
+$secondary-color:               $color-bg-surface;
+$card-background:               $color-bg-card;
+$hover-color:                   $color-accent-dark;
+
+$light-theme-background-color:  $light-bg;
+$light-theme-text-color:        $light-text;
+$light-theme-primary-color:     $light-accent;
+$light-theme-secondary-color:   $light-bg-surface;
+$light-theme-card-background:   $light-bg-card;
+$light-theme-hover-color:       $light-accent-dark;

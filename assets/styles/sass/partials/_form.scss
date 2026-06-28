@@ -1,104 +1,176 @@
-// Seção Contato
+// ============================================================
+// DEVICTOR — Contact Form v2.0
+// ============================================================
+
 .contact {
-  &__form {
-    max-width: 600px;
-
-    display: flex;
-    flex-flow: column wrap;
-    align-items: stretch;
-    gap: 1rem;
-
-    margin: 0 auto;
-  }
-
-  &__form-group {
-    display: flex;
-    flex-flow: column wrap;
-    position: relative;
-
-    animation: fadeInUp both;
-    animation-timeline: view(70% 5%);
-  }
-
-  &__form-input {
-    padding: 0.2rem 0.8rem;
-    border: none;
-    border-bottom: 2px solid $text-color;
-    background-color: transparent;
-    color: $text-color;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-
-    &:focus {
-      outline: none;
-      border-color: $primary-color;
+    &__wrapper {
+        max-width: 640px;
+        margin: 0 auto;
     }
 
-    &:focus + .contact__form-label,
-    &:not(:placeholder-shown) + .contact__form-label {
-      transform: translateY(-20px);
-      font-size: 0.8rem;
-      color: $primary-color;
+    &__subtitle {
+        text-align: center;
+        color: $color-text;
+        margin-bottom: 2.5rem;
+        font-size: $font-size-lg;
+        line-height: 1.6;
     }
-  }
 
-  &__form-textarea {
-    min-height: 150px;
-    resize: none;
-  }
+    &__form {
+        display: flex;
+        flex-flow: column;
+        gap: 1.5rem;
+        background: $gradient-card;
+        border: 1px solid $color-border;
+        border-radius: $radius-lg;
+        padding: 2rem;
 
-  &__form-label {
-    color: $text-color;
-    transition: all 0.3s;
-  }
-
-  &__form-submit {
-    align-self: center;
-    padding: 1rem;
-    background-color: $primary-color;
-    color: $background-color;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-
-    &:hover {
-      background-color: $hover-color;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        @include respond-to($breakpoint-md) {
+            padding: 2.5rem;
+        }
     }
-  }
-}
 
-.page--light-theme {
-  .contact {
-    &__form-input {
-      border-bottom-color: $light-theme-text-color;
-      color: $light-theme-text-color;
+    &__form-group {
+        display: flex;
+        flex-flow: column;
+        gap: 0.5rem;
+        position: relative;
 
-      &:focus {
-        border-color: $light-theme-primary-color;
-      }
-
-      &:focus + .contact__form-label,
-      &:not(:placeholder-shown) + .contact__form-label {
-        color: $light-theme-primary-color;
-      }
+        animation: fadeInUp both;
+        animation-timeline: view(70% 5%);
     }
 
     &__form-label {
-      color: $light-theme-text-color;
+        color: $color-text-muted;
+        font-size: $font-size-sm;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        transition: $transition-base;
+    }
+
+    &__form-input {
+        padding: 0.875rem 1rem;
+        border: 1.5px solid $color-border;
+        border-radius: $radius-md;
+        background: rgba($color-bg, 0.5);
+        color: $color-text-bright;
+        font-size: $font-size-base;
+        font-family: $font-primary;
+        transition: $transition-base;
+
+        &::placeholder {
+            color: $color-text-muted;
+            opacity: 0.7;
+        }
+
+        &:hover {
+            border-color: rgba($color-accent, 0.3);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $color-accent;
+            background: rgba($color-bg, 0.8);
+            box-shadow: 0 0 0 3px rgba($color-accent, 0.1), 0 4px 15px rgba($color-accent, 0.08);
+
+            & + .contact__form-label {
+                color: $color-accent;
+            }
+        }
+    }
+
+    &__form-textarea {
+        min-height: 140px;
+        resize: vertical;
+        line-height: 1.6;
     }
 
     &__form-submit {
-      background-color: $light-theme-primary-color;
-      color: $light-theme-background-color;
+        align-self: stretch;
+        padding: 1rem 2rem;
+        background: $gradient-accent;
+        color: $color-bg;
+        border: none;
+        border-radius: $radius-md;
+        font-size: $font-size-base;
+        font-weight: 700;
+        font-family: $font-primary;
+        cursor: pointer;
+        transition: $transition-bounce;
+        box-shadow: 0 4px 20px rgba($color-accent, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        letter-spacing: 0.02em;
+        position: relative;
+        overflow: hidden;
 
-      &:hover {
-        background-color: $light-theme-hover-color;
-      }
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            background-size: 200% auto;
+            opacity: 0;
+            transition: opacity 0.3s;
+            animation: shimmer 2.5s linear infinite;
+        }
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba($color-accent, 0.45);
+
+            &::before { opacity: 1; }
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+
+        i { font-size: 0.9em; }
     }
-  }
+}
+
+// ── Light Theme ────────────────────────────────────────────
+.page--light-theme {
+    .contact {
+        &__subtitle { color: $light-text-muted; }
+
+        &__form {
+            background: $light-bg-card;
+            border-color: $light-border;
+            box-shadow: $shadow-sm;
+        }
+
+        &__form-label { color: $light-text-muted; }
+
+        &__form-input {
+            border-color: $light-border;
+            background: rgba($light-bg, 0.5);
+            color: $light-text;
+
+            &::placeholder { color: $light-text-muted; }
+
+            &:hover { border-color: rgba($light-accent, 0.4); }
+
+            &:focus {
+                border-color: $light-accent;
+                background: $light-bg;
+                box-shadow: 0 0 0 3px rgba($light-accent, 0.1), 0 4px 15px rgba($light-accent, 0.08);
+
+                & + .contact__form-label { color: $light-accent; }
+            }
+        }
+
+        &__form-submit {
+            background: linear-gradient(135deg, $light-accent, $light-accent-dark);
+            box-shadow: 0 4px 20px rgba($light-accent, 0.3);
+
+            &:hover {
+                box-shadow: 0 8px 30px rgba($light-accent, 0.4);
+            }
+        }
+    }
 }

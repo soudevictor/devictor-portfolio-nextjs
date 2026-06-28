@@ -1,407 +1,656 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080d1a" />
 
-        <link
-            rel="shortcut icon"
-            href="./assets/public/favicon.ico"
-            type="image/x-icon"
+    <!-- SEO -->
+    <meta
+      name="description"
+      content="Portfólio de João Victor Carvalho — Desenvolvedor Front-end especializado em React, Angular, TypeScript, Tailwind CSS. Criando interfaces modernas, responsivas e acessíveis."
+    />
+    <meta
+      name="keywords"
+      content="desenvolvedor front-end, React, Angular, TypeScript, JavaScript, Tailwind CSS, portfólio, devictor, João Victor Carvalho"
+    />
+    <meta name="author" content="João Victor Carvalho de Souza" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Devictor — Desenvolvedor Front-end" />
+    <meta
+      property="og:description"
+      content="Portfólio de João Victor Carvalho — Desenvolvedor Front-end especializado em React e TypeScript."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://soudevictor.vercel.app/" />
+
+    <link
+      rel="shortcut icon"
+      href="./assets/public/favicon.ico"
+      type="image/x-icon"
+    />
+    <title>Devictor — Desenvolvedor Front-end</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/styles/css/style.css" />
+
+    <!-- BIBLIOTECAS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- JAVASCRIPT -->
+    <script src="./assets/javascript/index.js" defer></script>
+  </head>
+
+  <body class="page">
+    <!-- Header -->
+    <header class="header" id="header" role="banner">
+      <nav class="header__nav" aria-label="Navegação principal">
+        <img
+          src="./assets/images/logos/Devictor_LogoBranca.png"
+          alt="Logo Devictor"
+          class="header__logo"
+          id="header-logo"
         />
-        <title>Devictor</title>
+        <ul class="header__menu" role="list">
+          <li class="header__menu-item">
+            <a href="#inicio" class="header__menu-link" data-nav>Início</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#sobre" class="header__menu-link" data-nav>Sobre</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#projetos" class="header__menu-link" data-nav>Projetos</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#habilidades" class="header__menu-link" data-nav
+              >Habilidades</a
+            >
+          </li>
+          <li class="header__menu-item">
+            <a href="#contato" class="header__menu-link" data-nav>Contato</a>
+          </li>
+        </ul>
+        <div class="header__controls">
+          <!-- <button
+                        class="header__theme-toggle"
+                        aria-label="Alternar tema claro/escuro"
+                        id="theme-toggle"
+                    >
+                        <i class="fas fa-sun" aria-hidden="true"></i>
+                        <i class="fas fa-moon" aria-hidden="true"></i>
+                    </button> -->
+          <button
+            class="header__hamburger"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            id="hamburger"
+          >
+            <i class="fas fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+      </nav>
+    </header>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="./assets/styles/css/style.css" />
+    <!-- Mobile Menu Overlay -->
+    <div class="header__overlay" id="mobile-overlay" aria-hidden="true"></div>
 
-        <!-- BIBLIOTECAS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- Mobile Drawer -->
+    <nav
+      class="header__mobile-menu"
+      id="mobile-menu"
+      aria-label="Menu mobile"
+      role="navigation"
+    >
+      <button
+        class="header__mobile-close"
+        aria-label="Fechar menu"
+        id="mobile-close"
+      >
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+      <a href="#inicio" class="header__mobile-link" data-mobile-nav>Início</a>
+      <a href="#sobre" class="header__mobile-link" data-mobile-nav>Sobre</a>
+      <a href="#projetos" class="header__mobile-link" data-mobile-nav
+        >Projetos</a
+      >
+      <a href="#habilidades" class="header__mobile-link" data-mobile-nav
+        >Habilidades</a
+      >
+      <a href="#contato" class="header__mobile-link" data-mobile-nav>Contato</a>
+    </nav>
 
-        <!-- JAVASCRIPT -->
-        <script src="./assets/javascript/index.js" defer></script>
-    </head>
+    <main class="main" id="main-content">
+      <!-- Hero -->
+      <section id="inicio" class="hero" aria-label="Apresentação">
+        <!-- Partículas decorativas -->
+        <div class="hero__particles" aria-hidden="true">
+          <span class="hero__particle"></span>
+          <span class="hero__particle"></span>
+          <span class="hero__particle"></span>
+          <span class="hero__particle"></span>
+          <span class="hero__particle"></span>
+          <span class="hero__particle"></span>
+          <span class="hero__particle"></span>
+          <span class="hero__particle"></span>
+        </div>
 
-    <body class="page">
-        <header class="header">
-            <nav class="header__nav">
-                <img
-                    src="./assets/images/logos/Devictor_LogoBranca.png"
-                    alt="Logo Devictor"
-                    class="header__logo"
-                />
-                <ul class="header__menu">
-                    <li class="header__menu-item">
-                        <a href="#inicio" class="header__menu-link">Início</a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a href="#sobre" class="header__menu-link">Sobre</a>
-                    </li>
-                    <li class="header__menu-item">
-                        <a href="#projetos" class="header__menu-link"
-                            >Projetos</a
-                        >
-                    </li>
-                    <li class="header__menu-item">
-                        <a href="#habilidades" class="header__menu-link"
-                            >Habilidades</a
-                        >
-                    </li>
-                    <li class="header__menu-item">
-                        <a href="#contato" class="header__menu-link">Contato</a>
-                    </li>
-                </ul>
-                <button class="header__theme-toggle" aria-label="Alternar tema">
-                    <i class="fas fa-sun"></i>
-                    <i class="fas fa-moon"></i>
-                </button>
-            </nav>
-        </header>
+        <span class="hero__badge" aria-label="Status de disponibilidade">
+          Disponível para projetos
+        </span>
+        <h1 class="hero__title">João Victor <span>Carvalho</span></h1>
+        <p class="hero__subtitle">Desenvolvedor Front-end</p>
+        <div class="hero__typing" aria-live="polite">
+          <span id="typing-text" class="hero__typing-text"></span>
+        </div>
+        <div class="hero__cta-group">
+          <a href="#contato" class="hero__cta-button">
+            Vamos Conversar
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+          <a
+            href="#projetos"
+            class="hero__cta-button hero__cta-button--outline"
+          >
+            Ver Projetos
+          </a>
+        </div>
+      </section>
 
-        <main class="main">
-            <section id="inicio" class="hero">
-                <h1 class="hero__title">João Victor Carvalho</h1>
-                <h2 class="hero__subtitle">Desenvolvedor Front-end</h2>
-                <div class="hero__typing">
-                    <span id="typing-text" class="hero__typing-text"></span>
-                </div>
-                <a href="#contato" class="hero__cta-button">Entre em Contato</a>
-            </section>
-
-            <section id="sobre" class="about">
-                <h2 class="section-title">Sobre Mim</h2>
-                <div class="about__content">
-                    <div class="about__image-container">
-                        <div class="about__image-container--brackets">
-                            <img
-                                class="about__image"
-                                src="./assets/images/img01.jpg"
-                                alt="João Victor"
-                            />
-                            <div class="about__image-overlay"></div>
-                        </div>
-                    </div>
-                    <div class="about__text">
-                        <p class="about__description">
-                            Sou desenvolvedor front-end em formação, com foco em criar interfaces responsivas, acessíveis e otimizadas para performance. Tenho experiência prática com HTML, CSS, JavaScript, TypeScript, React.js e Tailwind CSS, além de integração com APIs REST e versionamento com Git.
-                        </p>
-                        <p class="about__description">
-                            Sou apaixonado por tecnologia, autodidata e movido pela curiosidade de entender como as coisas funcionam. Estou sempre buscando aprimorar minhas habilidades e transformar ideias em soluções funcionais que entregam uma boa experiência ao usuário.
-                        </p>
-                        <a
-                            href="./assets/docs/CVJoao_Carvalho.pdf"
-                            download
-                            class="about__cv-button"
-                            >Download CV <i class="fas fa-download"></i
-                        ></a>
-                    </div>
-                </div>
-            </section>
-
-            <section id="projetos" class="projects">
-                <h2 class="section-title">Meus Projetos</h2>
-                <div class="projects__grid">
-                    <article class="project-card">
-                        <div class="project-card__image-container">
-                            <img
-                                src="./assets/images/thumbnails/quicktaskImg.png"
-                                alt="To Do list"
-                                class="project-card__image"
-                            />
-                            <div class="project-card__overlay">
-                                <a
-                                    href="https://quicktask-two.vercel.app/"
-                                    target="_blank"
-                                    class="project-card__link"
-                                    ><i class="fas fa-eye"></i> Ver Projeto</a
-                                >
-                                <a
-                                    href="https://github.com/0Carvalh0/quicktask"
-                                    target="_blank"
-                                    class="project-card__link"
-                                    ><i class="fab fa-github"></i> Ver Código</a
-                                >
-                            </div>
-                        </div>
-                        <h3 class="project-card__title">QuickTask</h3>
-                        <p class="project-card__description">
-                            Uma aplicação simples e eficiente para gerenciar
-                            tarefas diárias. Permite adicionar, editar, marcar
-                            como concluída e excluir tarefas, com dados
-                            armazenados no navegador para fácil persistência.
-                        </p>
-                        <div class="project-card__tags">
-                            <span class="project-card__tag">HTML5</span>
-                            <span class="project-card__tag">CSS3</span>
-                            <span class="project-card__tag">React.js</span>
-                            <span class="project-card__tag"
-                                >React Router DOM</span
-                            >
-                            <span class="project-card__tag">React Icons</span>
-                            <span class="project-card__tag">TypeScript</span>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-card__image-container">
-                            <img
-                                src="./assets/images/thumbnails/motivactionImg.png"
-                                alt="MotivAction"
-                                class="project-card__image"
-                            />
-                            <div class="project-card__overlay">
-                                <a
-                                    href="https://motivaction.vercel.app/"
-                                    target="_blank"
-                                    class="project-card__link"
-                                    ><i class="fas fa-eye"></i> Ver Projeto</a
-                                >
-                                <a
-                                    href="https://github.com/0Carvalh0/motivaction"
-                                    target="_blank"
-                                    class="project-card__link"
-                                    ><i class="fab fa-github"></i> Ver Código</a
-                                >
-                            </div>
-                        </div>
-                        <h3 class="project-card__title">MotivAction</h3>
-                        <p class="project-card__description">
-                            MotivAction é um gerador de frases motivacionais
-                            criado para oferecer uma experiência simples e
-                            inspiradora. Com uma interface moderna e responsiva,
-                            o projeto utiliza APIs para buscar frases aleatórias
-                            e relevantes, ajudando os usuários a começar o dia
-                            com motivação e foco.
-                        </p>
-                        <div class="project-card__tags">
-                            <span class="project-card__tag">HTML5</span>
-                            <span class="project-card__tag">Tailwind CSS</span>
-                            <span class="project-card__tag">JavaScript</span>
-                            <span class="project-card__tag"
-                                >Advice Slip JSON API</span
-                            >
-                            <span class="project-card__tag">MyMemory API</span>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-card__image-container">
-                            <img
-                                src="./assets/images/thumbnails/multicalcImg.png"
-                                alt="Calculadora"
-                                class="project-card__image"
-                            />
-                            <div class="project-card__overlay">
-                                <a
-                                    href="https://multicalc-one.vercel.app/"
-                                    target="_blank"
-                                    class="project-card__link"
-                                    ><i class="fas fa-eye"></i> Ver Projeto</a
-                                >
-                                <a
-                                    href="https://github.com/0Carvalh0/multicalc"
-                                    target="_blank"
-                                    class="project-card__link"
-                                    ><i class="fab fa-github"></i> Ver Código</a
-                                >
-                            </div>
-                        </div>
-                        <h3 class="project-card__title">MultiCalc</h3>
-                        <p class="project-card__description">
-                            Uma calculadora versátil e poderosa que realiza
-                            diversos tipos de cálculos, incluindo matemáticos,
-                            financeiros e científicos. Interface simples, fácil
-                            de usar e ideal para diferentes finalidades.
-                        </p>
-                        <div class="project-card__tags">
-                            <span class="project-card__tag">HTML5</span>
-                            <span class="project-card__tag">SASS</span>
-                            <span class="project-card__tag">JavaScript</span>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <section id="habilidades" class="skills">
-                <h2 class="section-title">Minhas Habilidades</h2>
-                <div class="skills__container">
-                    <div class="skill-category">
-                        <h3 class="skill-category__title">Front-end</h3>
-                        <ul class="skill-category__list">
-                            <li class="skill-category__item">
-                                <i class="fab fa-html5"></i> HTML5
-                            </li>
-                            <li class="skill-category__item">
-                                <i class="fab fa-css3-alt"></i> CSS3
-                            </li>
-                            <li class="skill-category__item">
-                                <i class="fab fa-js"></i> JavaScript
-                            </li>
-                            <li class="skill-category__item">
-                                <i class="fab fa-react"></i> React.js
-                            </li>
-                            <li class="skill-category__item">
-                                <svg
-                                    class="skill-category__icon"
-                                    role="img"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <title>TypeScript</title>
-                                    <path
-                                        d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"
-                                        fill="currentColor"
-                                    />
-                                </svg>
-                                TypeScript
-                            </li>
-                            <li class="skill-category__item">
-                                <i class="fab fa-sass"></i> SASS
-                            </li>
-                            <li class="skill-category__item">
-                                <svg
-                                    class="skill-category__icon"
-                                    role="img"
-                                    viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <title>Tailwind CSS</title>
-                                    <path
-                                        d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
-                                        fill="currentColor"
-                                    />
-                                </svg>
-                                Tailwind CSS
-                            </li>
-                            <li class="skill-category__item">
-                                <i class="fab fa-bootstrap"></i> Bootstrap
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-category">
-                        <h3 class="skill-category__title">Ferramentas</h3>
-                        <ul class="skill-category__list">
-                            <li class="skill-category__item">
-                                <i class="fab fa-git-alt"></i> Git
-                            </li>
-                            <li class="skill-category__item">
-                                <i class="fab fa-github"></i> GitHub
-                            </li>
-                            <li class="skill-category__item">
-                                <i class="fab fa-npm"></i> NPM
-                            </li>
-                            <li class="skill-category__item">
-                                <i class="fab fa-figma"></i> Figma
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <section id="contato" class="contact">
-                <h2 class="section-title">Entre em Contato</h2>
-                <form
-                    id="contact-form"
-                    class="contact__form"
-                    action="https://api.web3forms.com/submit"
-                    method="POST"
-                >
-                    <div class="contact__form-group">
-                        <label for="name" class="contact__form-label"
-                            >Seu Nome</label
-                        >
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            class="contact__form-input"
-                            required
-                        />
-                    </div>
-                    <div class="contact__form-group">
-                        <label for="email" class="contact__form-label"
-                            >Seu E-mail</label
-                        >
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            class="contact__form-input"
-                            required
-                        />
-                    </div>
-                    <div class="contact__form-group">
-                        <label for="message" class="contact__form-label"
-                            >Sua Mensagem</label
-                        >
-                        <textarea
-                            id="message"
-                            name="message"
-                            class="contact__form-input contact__form-textarea"
-                            required
-                        ></textarea>
-                    </div>
-                    <button type="submit" class="contact__form-submit">
-                        Enviar Mensagem
-                    </button>
-
-                    <input
-                        type="checkbox"
-                        name="botcheck"
-                        class="hidden"
-                        value=""
-                        style="display: none"
-                    />
-                    <input
-                        type="hidden"
-                        name="access_key"
-                        value="05c51542-5a57-45f4-8402-43b8f0dc0e5d"
-                    />
-                    <input
-                        type="hidden"
-                        name="redirect"
-                        value="https://portfoliojoaocarvalho.vercel.app"
-                    />
-                </form>
-            </section>
-        </main>
-
-        <dialog class="thank-youModal">
-            <div class="thank-youModal__container">
-                <h1 class="thank-youModal__title">
-                    Obrigado pelo seu contato!
-                </h1>
-                <p class="thank-youModal__message">
-                    Sua mensagem foi recebida com sucesso. Entrarei em contato o
-                    mais breve possível.
-                </p>
-                <div class="thank-youModal__icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <button class="thank-youModal__button">OK</button>
+      <!-- Sobre Mim -->
+      <section id="sobre" class="about" aria-label="Sobre mim">
+        <h2 class="section-title">Sobre Mim</h2>
+        <div class="about__content">
+          <div class="about__image-container" aria-hidden="true">
+            <div class="about__image-container--brackets">
+              <img
+                class="about__image"
+                src="./assets/images/img01.jpeg"
+                alt="João Victor Carvalho, desenvolvedor front-end"
+                loading="lazy"
+              />
+              <div class="about__image-overlay"></div>
             </div>
-        </dialog>
-
-        <footer class="footer">
-            <div class="footer__social-links">
-                <a
-                    href="https://github.com/0Carvalh0"
-                    target="_blank"
-                    class="footer__social-link"
-                    ><i class="fab fa-github"></i
-                ></a>
-                <a
-                    href="https://www.linkedin.com/in/devjoaocarvalho/"
-                    target="_blank"
-                    class="footer__social-link"
-                    ><i class="fab fa-linkedin"></i
-                ></a>
-            </div>
-            <p class="footer__copyright">
-                &copy; 2024 Devictor. Todos os direitos reservados - João Victor
-                Carvalho de Souza
+          </div>
+          <div class="about__text">
+            <p class="about__description">
+              Sou Desenvolvedor Front-end especializado no ecossistema Angular e
+              TypeScript, com foco na engenharia de plataformas B2B. Tenho
+              histórico prático na criação de arquiteturas baseadas em
+              componentes, consumo de APIs RESTful e resolução de gargalos de
+              performance em sistemas de alta complexidade operando sob
+              metodologias ágeis (Scrum).
             </p>
-        </footer>
-    </body>
+            <p class="about__description">
+              Sou apaixonado por tecnologia, autodidata e movido pela
+              curiosidade de entender como as coisas funcionam. Estou sempre
+              buscando aprimorar minhas habilidades e transformar ideias em
+              soluções funcionais que entregam uma boa experiência ao usuário.
+            </p>
+
+            <!-- Stats Cards -->
+            <div class="about__stats" aria-label="Estatísticas">
+              <div class="about__stat">
+                <span class="about__stat-value" data-count="9">0</span>
+                <span class="about__stat-label">Sprints<br />Ágeis</span>
+              </div>
+              <div class="about__stat">
+                <span class="about__stat-value" data-count="4">0</span>
+                <span class="about__stat-label"
+                  >Módulos<br />Core Entregues</span
+                >
+              </div>
+              <div class="about__stat">
+                <span class="about__stat-value" data-count="29">0</span>
+                <span class="about__stat-label">Gargalos<br />Resolvidos</span>
+              </div>
+            </div>
+
+            <a
+              href="./assets/docs/JoaoVictor_DesenvolvedorFrontEnd.pdf"
+              download
+              class="about__cv-button"
+              aria-label="Baixar currículo em PDF"
+            >
+              Download CV <i class="fas fa-download" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projetos -->
+      <section id="projetos" class="projects" aria-label="Meus projetos">
+        <h2 class="section-title">Meus Projetos</h2>
+        <div class="projects__grid">
+          <article class="project-card">
+            <div class="project-card__image-container">
+              <img
+                src="./assets/images/thumbnails/quicktaskImg.png"
+                alt="Interface da aplicação QuickTask — gerenciador de tarefas"
+                class="project-card__image"
+                loading="lazy"
+              />
+              <div class="project-card__overlay">
+                <a
+                  href="https://quicktask-two.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-card__link"
+                  aria-label="Ver QuickTask online"
+                >
+                  <i class="fas fa-eye" aria-hidden="true"></i> Ver Projeto
+                </a>
+                <a
+                  href="https://github.com/0Carvalh0/quicktask"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-card__link"
+                  aria-label="Ver código QuickTask no GitHub"
+                >
+                  <i class="fab fa-github" aria-hidden="true"></i> Ver Código
+                </a>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">QuickTask</h3>
+              <p class="project-card__description">
+                Uma aplicação simples e eficiente para gerenciar tarefas
+                diárias. Permite adicionar, editar, marcar como concluída e
+                excluir tarefas, com dados armazenados no navegador para fácil
+                persistência.
+              </p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">HTML5</span>
+                <span class="project-card__tag">CSS3</span>
+                <span class="project-card__tag">React.js</span>
+                <span class="project-card__tag">React Router</span>
+                <span class="project-card__tag">TypeScript</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__image-container">
+              <img
+                src="./assets/images/thumbnails/motivactionImg.png"
+                alt="Interface da aplicação MotivAction — gerador de frases motivacionais"
+                class="project-card__image"
+                loading="lazy"
+              />
+              <div class="project-card__overlay">
+                <a
+                  href="https://motivaction.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-card__link"
+                  aria-label="Ver MotivAction online"
+                >
+                  <i class="fas fa-eye" aria-hidden="true"></i> Ver Projeto
+                </a>
+                <a
+                  href="https://github.com/0Carvalh0/motivaction"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-card__link"
+                  aria-label="Ver código MotivAction no GitHub"
+                >
+                  <i class="fab fa-github" aria-hidden="true"></i> Ver Código
+                </a>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">MotivAction</h3>
+              <p class="project-card__description">
+                Gerador de frases motivacionais com interface moderna e
+                responsiva. Utiliza APIs para buscar frases aleatórias e
+                relevantes, ajudando os usuários a começar o dia com motivação e
+                foco.
+              </p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">HTML5</span>
+                <span class="project-card__tag">Tailwind CSS</span>
+                <span class="project-card__tag">JavaScript</span>
+                <span class="project-card__tag">Advice Slip API</span>
+                <span class="project-card__tag">MyMemory API</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-card__image-container">
+              <img
+                src="./assets/images/thumbnails/multicalcImg.png"
+                alt="Interface da aplicação MultiCalc — calculadora versátil"
+                class="project-card__image"
+                loading="lazy"
+              />
+              <div class="project-card__overlay">
+                <a
+                  href="https://multicalc-one.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-card__link"
+                  aria-label="Ver MultiCalc online"
+                >
+                  <i class="fas fa-eye" aria-hidden="true"></i> Ver Projeto
+                </a>
+                <a
+                  href="https://github.com/0Carvalh0/multicalc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-card__link"
+                  aria-label="Ver código MultiCalc no GitHub"
+                >
+                  <i class="fab fa-github" aria-hidden="true"></i> Ver Código
+                </a>
+              </div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">MultiCalc</h3>
+              <p class="project-card__description">
+                Uma calculadora versátil e poderosa que realiza diversos tipos
+                de cálculos, incluindo matemáticos, financeiros e científicos.
+                Interface simples, fácil de usar e ideal para diferentes
+                finalidades.
+              </p>
+              <div class="project-card__tags">
+                <span class="project-card__tag">HTML5</span>
+                <span class="project-card__tag">SASS</span>
+                <span class="project-card__tag">JavaScript</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Habilidades -->
+      <section id="habilidades" class="skills" aria-label="Minhas habilidades">
+        <h2 class="section-title">Minhas Habilidades</h2>
+        <div class="skills__container">
+          <!-- Front-end -->
+          <div class="skill-category">
+            <h3 class="skill-category__title">Front-end</h3>
+            <ul class="skill-category__list" role="list">
+              <li class="skill-category__item">
+                <i class="fa-brands fa-angular"></i> Angular
+              </li>
+              <li class="skill-category__item">
+                <svg
+                  class="skill-category__icon"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-label="TypeScript"
+                >
+                  <title>TypeScript</title>
+                  <path
+                    d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"
+                    fill="currentColor"
+                  />
+                </svg>
+                TypeScript
+              </li>
+              <li class="skill-category__item">
+                <i class="fab fa-react" aria-hidden="true"></i> React.js
+              </li>
+              <li class="skill-category__item">
+                <svg
+                  class="skill-category__icon"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-label="Next.js"
+                >
+                  <title>Next.js</title>
+                  <path
+                    d="M11.2141 0.00645944C11.1625 0.0111515 10.9982 0.0275738 10.8504 0.039304C7.44164 0.346635 4.24868 2.18593 2.22639 5.01291C1.10029 6.58476 0.380059 8.36775 0.107918 10.2563C0.0117302 10.9156 0 11.1103 0 12.0041C0 12.898 0.0117302 13.0927 0.107918 13.7519C0.760117 18.2587 3.96716 22.0452 8.31672 23.4481C9.0956 23.6991 9.91672 23.8704 10.8504 23.9736C11.2141 24.0135 12.7859 24.0135 13.1496 23.9736C14.7613 23.7953 16.1267 23.3965 17.4733 22.7091C17.6798 22.6035 17.7196 22.5754 17.6915 22.5519C17.6727 22.5378 16.793 21.3578 15.7372 19.9314L13.8182 17.339L11.4135 13.7801C10.0903 11.8235 9.00176 10.2235 8.99238 10.2235C8.98299 10.2211 8.97361 11.8024 8.96891 13.7331C8.96188 17.1138 8.95953 17.2499 8.9173 17.3296C8.85631 17.4446 8.80938 17.4915 8.71085 17.5431C8.63578 17.5807 8.57009 17.5877 8.21584 17.5877H7.80997L7.70205 17.5197C7.63167 17.4751 7.58006 17.4164 7.54487 17.3484L7.4956 17.2428L7.50029 12.539L7.50733 7.83285L7.58006 7.74136C7.6176 7.69209 7.69736 7.62875 7.75367 7.59825C7.84985 7.55133 7.88739 7.54664 8.29325 7.54664C8.77185 7.54664 8.85161 7.5654 8.97595 7.70147C9.01114 7.73901 10.3132 9.7003 11.871 12.0628C13.4287 14.4252 15.5589 17.651 16.6053 19.2346L18.5056 22.1132L18.6018 22.0499C19.4534 21.4962 20.3543 20.7079 21.0674 19.8868C22.5853 18.1437 23.5636 16.0182 23.8921 13.7519C23.9883 13.0927 24 12.898 24 12.0041C24 11.1103 23.9883 10.9156 23.8921 10.2563C23.2399 5.74957 20.0328 1.96306 15.6833 0.560125C14.9161 0.311445 14.0997 0.140184 13.1848 0.036958C12.9595 0.0134976 11.4088 -0.0123089 11.2141 0.00645944ZM16.1267 7.26511C16.2393 7.32142 16.3308 7.42933 16.3636 7.54194C16.3824 7.60294 16.3871 8.90734 16.3824 11.8469L16.3754 16.0651L15.6317 14.9249L14.8856 13.7848V10.7185C14.8856 8.73608 14.895 7.62171 14.9091 7.56775C14.9466 7.43637 15.0287 7.33315 15.1413 7.27215C15.2375 7.22288 15.2727 7.21819 15.6411 7.21819C15.9883 7.21819 16.0493 7.22288 16.1267 7.26511Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Next.js
+              </li>
+              <li class="skill-category__item">
+                <i class="fab fa-js" aria-hidden="true"></i> JavaScript (ES6+)
+              </li>
+              <li class="skill-category__item">
+                <svg
+                  class="skill-category__icon"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-label="Tailwind CSS"
+                >
+                  <title>Tailwind CSS</title>
+                  <path
+                    d="M12.001,4.8c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 C13.666,10.618,15.027,12,18.001,12c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C16.337,6.182,14.976,4.8,12.001,4.8z M6.001,12c-3.2,0-5.2,1.6-6,4.8c1.2-1.6,2.6-2.2,4.2-1.8c0.913,0.228,1.565,0.89,2.288,1.624 c1.177,1.194,2.538,2.576,5.512,2.576c3.2,0,5.2-1.6,6-4.8c-1.2,1.6-2.6,2.2-4.2,1.8c-0.913-0.228-1.565-0.89-2.288-1.624 C10.337,13.382,8.976,12,6.001,12z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Tailwind CSS
+              </li>
+              <li class="skill-category__item">
+                <i class="fab fa-sass" aria-hidden="true"></i> SASS
+              </li>
+              <li class="skill-category__item">
+                <i class="fab fa-html5" aria-hidden="true"></i> HTML5
+              </li>
+              <li class="skill-category__item">
+                <i class="fab fa-css3-alt" aria-hidden="true"></i> CSS3
+              </li>
+            </ul>
+          </div>
+
+          <!-- Arquitetura e Processos -->
+          <div class="skill-category">
+            <h3 class="skill-category__title">Arquitetura e Processos</h3>
+            <ul class="skill-category__list" role="list">
+              <li class="skill-category__item">
+                <i class="fas fa-cubes" aria-hidden="true"></i> Arquitetura de
+                Componentes
+              </li>
+              <li class="skill-category__item">
+                <i class="fas fa-project-diagram" aria-hidden="true"></i>
+                Gerenciamento de Estado
+              </li>
+              <li class="skill-category__item">
+                <i class="fas fa-network-wired" aria-hidden="true"></i>
+                Integração de APIs RESTful
+              </li>
+              <li class="skill-category__item">
+                <i class="fas fa-universal-access" aria-hidden="true"></i>
+                Acessibilidade (WCAG / ARIA)
+              </li>
+              <li class="skill-category__item">
+                <i class="fas fa-sync-alt" aria-hidden="true"></i> Metodologias
+                Ágeis (Scrum)
+              </li>
+            </ul>
+          </div>
+
+          <!-- Ferramentas -->
+          <div class="skill-category">
+            <h3 class="skill-category__title">Ferramentas</h3>
+            <ul class="skill-category__list" role="list">
+              <li class="skill-category__item">
+                <i class="fab fa-git-alt" aria-hidden="true"></i> Git
+              </li>
+              <li class="skill-category__item">
+                <i class="fab fa-github" aria-hidden="true"></i> GitHub
+              </li>
+              <li class="skill-category__item">
+                <i class="fab fa-gitlab" aria-hidden="true"></i> GitLab
+              </li>
+              <li class="skill-category__item">
+                <i class="fab fa-npm" aria-hidden="true"></i> NPM
+              </li>
+              <li class="skill-category__item">
+                <svg
+                  class="skill-category__icon"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-label="Vercel"
+                >
+                  <title>Vercel</title>
+                  <path d="M12 1L24 22H0L12 1Z" fill="currentcolor" />
+                </svg>
+                Vercel
+              </li>
+              <li class="skill-category__item">
+                <i class="fab fa-figma" aria-hidden="true"></i> Figma
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contato -->
+      <section id="contato" class="contact" aria-label="Formulário de contato">
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="contact__wrapper">
+          <p class="contact__subtitle">
+            Tem um projeto em mente ou quer bater um papo? Me manda uma
+            mensagem!
+          </p>
+          <form
+            id="contact-form"
+            class="contact__form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            novalidate
+          >
+            <div class="contact__form-group">
+              <label for="name" class="contact__form-label">Seu Nome</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="contact__form-input"
+                placeholder="Seu nome..."
+                required
+                autocomplete="name"
+              />
+            </div>
+            <div class="contact__form-group">
+              <label for="email" class="contact__form-label">Seu E-mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="contact__form-input"
+                placeholder="email@exemplo.com"
+                required
+                autocomplete="email"
+              />
+            </div>
+            <div class="contact__form-group">
+              <label for="message" class="contact__form-label"
+                >Sua Mensagem</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                class="contact__form-input contact__form-textarea"
+                placeholder="Olá, gostaria de conversar sobre..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="contact__form-submit" id="submit-btn">
+              <i class="fas fa-paper-plane" aria-hidden="true"></i>
+              Enviar Mensagem
+            </button>
+
+            <input
+              type="checkbox"
+              name="botcheck"
+              class="hidden"
+              value=""
+              style="display: none"
+            />
+            <input
+              type="hidden"
+              name="access_key"
+              value="05c51542-5a57-45f4-8402-43b8f0dc0e5d"
+            />
+            <input
+              type="hidden"
+              name="redirect"
+              value="https://soudevictor.vercel.app/"
+            />
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal de agradecimento -->
+    <dialog
+      class="thank-youModal"
+      id="thank-you-modal"
+      aria-labelledby="modal-title"
+      aria-modal="true"
+    >
+      <div class="thank-youModal__container">
+        <div class="thank-youModal__icon" aria-hidden="true">
+          <i class="fas fa-check"></i>
+        </div>
+        <h2 class="thank-youModal__title" id="modal-title">
+          Mensagem enviada!
+        </h2>
+        <p class="thank-youModal__message">
+          Obrigado pelo seu contato! Entrarei em contato o mais breve possível.
+        </p>
+        <button
+          class="thank-youModal__button"
+          id="modal-close"
+          aria-label="Fechar modal"
+        >
+          Entendido!
+        </button>
+      </div>
+    </dialog>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__inner">
+        <div class="footer__social-links" aria-label="Redes sociais">
+          <a
+            href="https://github.com/soudevictor"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer__social-link"
+            aria-label="GitHub de João Victor"
+          >
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/soudevictor/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer__social-link"
+            aria-label="LinkedIn de João Victor"
+          >
+            <i class="fab fa-linkedin" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="footer__divider" aria-hidden="true"></div>
+        <p class="footer__copyright">
+          &copy; 2026 <span>Devictor</span> — João Victor Carvalho de Souza
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>

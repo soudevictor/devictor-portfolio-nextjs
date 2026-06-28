@@ -1,48 +1,122 @@
-// Estilos do Footer
+// ============================================================
+// DEVICTOR — Footer v2.0
+// ============================================================
+
 .footer {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
+    background: $color-bg-surface;
+    border-top: 1px solid $color-border;
+    margin-top: 2rem;
+    padding: 3rem 1.5rem 2rem;
+    position: relative;
+    overflow: hidden;
 
-  background-color: $secondary-color;
-  text-align: center;
-  color: $text-color;
-  margin-top: 2rem;
-  padding: 2rem;
-
-  &__social-links {
-    display: flex;
-    gap: 1rem;
-  }
-
-  &__social-link {
-    font-size: 1.5rem;
-    color: $text-color;
-    transition: color 0.3s;
-
-    &:hover {
-      color: $primary-color;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: $gradient-accent;
     }
-  }
+
+    &__inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    &__social-links {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    &__social-link {
+        @include square(44px);
+        @include flex-center;
+        font-size: 1.2rem;
+        color: $color-text-muted;
+        background: rgba($color-accent, 0.06);
+        border: 1px solid $color-border;
+        border-radius: $radius-full;
+        transition: $transition-bounce;
+
+        &:hover {
+            color: $color-accent;
+            background: rgba($color-accent, 0.15);
+            border-color: rgba($color-accent, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba($color-accent, 0.2);
+        }
+    }
+
+    &__divider {
+        width: 60px;
+        height: 1px;
+        background: $color-border;
+    }
+
+    &__copyright {
+        color: $color-text-muted;
+        font-size: $font-size-sm;
+        text-align: center;
+        line-height: 1.6;
+
+        span {
+            color: $color-accent;
+            font-weight: 600;
+        }
+    }
+
+    &__made-with {
+        font-size: $font-size-xs;
+        color: $color-text-muted;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+
+        i {
+            color: #e05f5f;
+            font-size: 0.85em;
+        }
+    }
 }
 
 .page--thank-you .footer {
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
 
+// ── Light Theme ────────────────────────────────────────────
 .page--light-theme {
-  .footer {
-    background-color: $light-theme-secondary-color;
-    color: $light-theme-text-color;
+    .footer {
+        background: $light-bg-surface;
+        border-top-color: $light-border;
 
-    &__social-link {
-      color: $light-theme-text-color;
+        &__social-link {
+            color: $light-text-muted;
+            background: rgba($light-accent, 0.06);
+            border-color: $light-border;
 
-      &:hover {
-        color: $light-theme-primary-color;
-      }
+            &:hover {
+                color: $light-accent;
+                background: rgba($light-accent, 0.12);
+                border-color: rgba($light-accent, 0.4);
+                box-shadow: 0 8px 20px rgba($light-accent, 0.15);
+            }
+        }
+
+        &__divider { background: $light-border; }
+
+        &__copyright {
+            color: $light-text-muted;
+            span { color: $light-accent; }
+        }
+
+        &__made-with { color: $light-text-muted; }
     }
-  }
 }
