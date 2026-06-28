@@ -1,71 +1,150 @@
-// Seção Habilidades
+// ============================================================
+// DEVICTOR — Skills v2.0
+// ============================================================
+
 .skills {
-  &__container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    &__container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
 
-    @include respond-to($breakpoint-md) {
-      grid-template-columns: repeat(2, 1fr);
-    }
+        @include respond-to($breakpoint-md) {
+            grid-template-columns: repeat(2, 1fr);
+        }
 
-    @include respond-to($breakpoint-lg) {
-      grid-template-columns: repeat(3, 1fr);
+        @include respond-to($breakpoint-lg) {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
-  }
 }
 
 .skill-category {
-  background-color: $card-background;
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: $gradient-card;
+    border: 1px solid $color-border;
+    padding: 2rem 1.5rem;
+    border-radius: $radius-lg;
+    transition: $transition-base;
+    position: relative;
+    overflow: hidden;
 
-  animation: fadeInUp both;
-  animation-timeline: view(70% 5%);
-
-  &__title {
-    color: $primary-color;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    text-align: center;
-  }
-
-  &__list {
-    display: flex;
-    flex-flow: column wrap;
-    gap: 1rem;
-  }
-
-  &__item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 1.2rem;
-
-    i {
-      color: $primary-color;
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: $gradient-accent;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-  }
 
-  &__icon {
-    color: $text-color;
-    @include imageSize(18px);
-  }
-}
+    animation: fadeInUp both;
+    animation-timeline: view(70% 5%);
 
-.page--light-theme {
-  .skill-category {
-    background-color: $light-theme-card-background;
+    &:hover {
+        border-color: $color-border-hover;
+        box-shadow: $shadow-glow;
+        transform: translateY(-4px);
+
+        &::after { transform: scaleX(1); }
+    }
 
     &__title {
-      color: $light-theme-primary-color;
+        font-family: $font-heading;
+        color: $color-text-bright;
+        margin-bottom: 1.5rem;
+        font-size: $font-size-xl;
+        font-weight: 700;
+        text-align: left;
+        letter-spacing: -0.01em;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid $color-border;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 1.2em;
+            background: $gradient-accent;
+            border-radius: $radius-full;
+            flex-shrink: 0;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-flow: column;
+        gap: 0.75rem;
     }
 
     &__item {
-      i {
-        color: $light-theme-primary-color;
-      }
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: $font-size-base;
+        font-weight: 500;
+        color: $color-text;
+        padding: 0.5rem 0.75rem;
+        border-radius: $radius-sm;
+        transition: $transition-base;
+        cursor: default;
+
+        &:hover {
+            background: rgba($color-accent, 0.06);
+            color: $color-text-bright;
+            padding-left: 1rem;
+        }
+
+        i {
+            font-size: 1.3rem;
+            color: $color-accent;
+            transition: $transition-base;
+            width: 1.5rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
     }
-  }
+
+    &__icon {
+        @include square(14px);
+        flex-shrink: 0;
+        transition: $transition-base;
+    }
+}
+
+// ── Light Theme ────────────────────────────────────────────
+.page--light-theme {
+    .skill-category {
+        background: $light-bg-card;
+        border-color: $light-border;
+        box-shadow: $shadow-sm;
+
+        &:hover {
+            border-color: $light-border-hover;
+            box-shadow: 0 6px 25px rgba($light-accent, 0.12);
+        }
+
+        &__title {
+            color: $light-text;
+            border-bottom-color: $light-border;
+        }
+
+        &__item {
+            color: $light-text-muted;
+
+            &:hover {
+                background: rgba($light-accent, 0.06);
+                color: $light-text;
+            }
+
+            i { color: $light-accent; }
+        }
+
+        &__icon { color: $light-accent; }
+    }
 }

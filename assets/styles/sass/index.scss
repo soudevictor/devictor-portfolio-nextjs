@@ -14,73 +14,84 @@
 @import "./partials/footer";
 @import "./partials/thank";
 
+// ── Scroll ─────────────────────────────────────────────────
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 82px;
+    scroll-padding-top: 80px;
+    @include custom-scrollbar($color-accent, $color-bg-surface, 8px);
 }
 
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: $primary-color;
-    border-radius: 5px;
-}
-
-// Estilos Globais
+// ── Global Body ────────────────────────────────────────────
 .page {
-    font-family: "Poppins", sans-serif;
-    background-color: $background-color;
-    color: $text-color;
-    line-height: 1.6;
-    transition: background-color 0.3s, color 0.3s;
+    font-family: $font-primary;
+    background-color: $color-bg;
+    color: $color-text;
+    line-height: 1.7;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    // Mesh gradient de fundo global
+    background-image: $gradient-bg-mesh;
+    background-attachment: fixed;
 
     &--light-theme {
-        background-color: $light-theme-background-color;
-        color: $light-theme-text-color;
+        background-color: $light-bg;
+        background-image: radial-gradient(ellipse at 20% 50%, rgba(0, 126, 168, 0.04) 0%, transparent 60%),
+                          radial-gradient(ellipse at 80% 20%, rgba(0, 100, 200, 0.03) 0%, transparent 60%);
+        color: $light-text;
 
         a {
-            color: $light-theme-primary-color;
-
-            &:hover {
-                color: $light-theme-hover-color;
-            }
+            color: $light-accent;
+            &:hover { color: $light-accent-dark; }
         }
 
         .section-title {
-            color: $light-theme-primary-color;
-
-            &::after {
-                background-color: $light-theme-primary-color;
-            }
+            color: $light-accent;
+            &::after { background: linear-gradient(90deg, $light-accent, $light-accent-dark); }
         }
     }
 }
 
+// ── Links Globais ──────────────────────────────────────────
 a {
-    color: $primary-color;
+    color: $color-accent;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: $transition-base;
 
-    &:hover {
-        color: $hover-color;
-    }
+    &:hover { color: $color-accent-dark; }
 }
 
-// Estilos do Conteúdo Principal
+// ── Layout Principal ───────────────────────────────────────
 .main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 80px 1rem 0;
+    padding: 80px 1.25rem 0;
+
+    @include respond-to($breakpoint-md) {
+        padding: 80px 2rem 0;
+    }
 }
 
+// ── Seções ─────────────────────────────────────────────────
+.main > section {
+    padding-bottom: $spacing-section;
+
+    @include respond-to($breakpoint-md) {
+        padding-bottom: $spacing-section;
+    }
+}
+
+// ── Section Title ──────────────────────────────────────────
 .section-title {
-    font-size: 2.5rem;
-    margin: 2rem 0;
-    color: $primary-color;
+    font-family: $font-heading;
+    font-size: $font-size-4xl;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: $color-accent;
     text-align: center;
     position: relative;
+    letter-spacing: -0.02em;
 
     animation: fadeInUp both;
     animation-timeline: view(70% 5%);
@@ -88,13 +99,16 @@ a {
     &::after {
         content: "";
         display: block;
-        width: 100px;
+        width: 60px;
         height: 3px;
-        background-color: $primary-color;
-        margin: 0.5rem auto 0;
+        background: $gradient-accent;
+        margin: 0.75rem auto 0;
+        border-radius: $radius-full;
     }
 }
 
-.main > section {
-    animation: fadeInUp 1s ease-out;
+// ── Selection ──────────────────────────────────────────────
+::selection {
+    background: rgba($color-accent, 0.25);
+    color: $color-text-bright;
 }
